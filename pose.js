@@ -40,13 +40,16 @@ function onResultsPose(results) {
   document.body.classList.add('loaded');
   fpsControl.tick();
 
-  let b_angle = getAngle(results.poseLandmarks[12], results.poseLandmarks[24], results.poseLandmarks[26])
-  let k_angle = getAngle(results.poseLandmarks[24], results.poseLandmarks[26], results.poseLandmarks[28])
-
   canvasCtx5.save();
   canvasCtx5.clearRect(0, 0, out5.width, out5.height);
   canvasCtx5.drawImage(
       results.image, 0, 0, out5.width, out5.height);
+      
+  if(results.poseLandmarks !== undefined)
+  {
+      
+  let b_angle = getAngle(results.poseLandmarks[12], results.poseLandmarks[24], results.poseLandmarks[26])
+  let k_angle = getAngle(results.poseLandmarks[24], results.poseLandmarks[26], results.poseLandmarks[28])
   
   canvasCtx5.font = '9px Arial'
   
@@ -127,6 +130,8 @@ function onResultsPose(results) {
       Object.values(POSE_LANDMARKS_NEUTRAL)
           .map(index => results.poseLandmarks[index]),
       {color: '#FF0000', fillColor: '#FF0000', lineWidth: 0, radius: 2});
+      
+  }
   canvasCtx5.restore();
 }
 
@@ -139,7 +144,7 @@ const camera = new Camera(video5, {
   onFrame: async () => {
     await pose.send({image: video5});
   },
-  width: 480,
+  width: 640,
   height: 480
 });
 camera.start();
