@@ -39,6 +39,8 @@ const getAngle = (firstPoint, midPoint, lastPoint) => {
 function onResultsPose(results) {
   document.body.classList.add('loaded');
   fpsControl.tick();
+  
+  let speech = new SpeechSynthesisUtterance()
 
   canvasCtx5.save();
   canvasCtx5.clearRect(0, 0, out5.width, out5.height);
@@ -61,6 +63,11 @@ function onResultsPose(results) {
   if(Math.abs(results.poseLandmarks[24].x - results.poseLandmarks[23].x)*1000 >= 70)
   {
     canvasCtx5.fillText('Face your right side', 20, 20)
+    
+    speech.text = 'Face right'
+    
+    window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
+    
   }
   
   if(k_angle <= 120 && k_angle >= 60 && complete)
@@ -81,6 +88,12 @@ function onResultsPose(results) {
       count--
       partial = false
       
+      window.speechSynthesis.cancel()
+      
+      speech.text = `${count} squats to go`
+      
+      window.speechSynthesis.speak(speech)
+      
       if(count === 0)
       {
         start = false
@@ -91,6 +104,12 @@ function onResultsPose(results) {
   if(partial && (k_angle > 150 && b_angle > 150))
   {
     canvasCtx5.fillText('Partial squat', 20, 30)
+    
+    speech.text = 'Partial squat'
+    
+    window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
+    
+    partial = false
   }
   
   canvasCtx5.fillText(`Count = ${count}`, 20, 40)
@@ -131,6 +150,9 @@ function onResultsPose(results) {
           .map(index => results.poseLandmarks[index]),
       {color: '#FF0000', fillColor: '#FF0000', lineWidth: 0, radius: 2});
       
+  } else
+  {
+    canvasCtx5.fillText('Not getting detected', 20, 10)
   }
   canvasCtx5.restore();
 }
@@ -144,8 +166,8 @@ const camera = new Camera(video5, {
   onFrame: async () => {
     await pose.send({image: video5});
   },
-  width: 480,
-  height: 480
+  width: out5.width,
+  height: out5.height
 });
 camera.start();
 
