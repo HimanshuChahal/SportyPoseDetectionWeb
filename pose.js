@@ -3,8 +3,6 @@ const out5 = document.getElementsByClassName('output5')[0];
 const controlsElement5 = document.getElementsByClassName('control5')[0];
 const canvasCtx5 = out5.getContext('2d');
 
-out5.height = out5.width
-
 var complete = false
 var start = true
 var partial = false
@@ -55,7 +53,7 @@ function onResultsPose(results) {
   let b_angle = getAngle(results.poseLandmarks[12], results.poseLandmarks[24], results.poseLandmarks[26])
   let k_angle = getAngle(results.poseLandmarks[24], results.poseLandmarks[26], results.poseLandmarks[28])
   
-  canvasCtx5.font = '7px Arial'
+  canvasCtx5.font = '8px Arial'
   
   if(results.poseLandmarks[28].visibility < 0.25 && results.poseLandmarks[27].visibility < 0.25)
   {
