@@ -3,6 +3,8 @@ const out5 = document.getElementsByClassName('output5')[0];
 const controlsElement5 = document.getElementsByClassName('control5')[0];
 const canvasCtx5 = out5.getContext('2d');
 
+out5.width = out5.height
+
 var complete = false
 var start = true
 var partial = false
