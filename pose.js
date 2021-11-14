@@ -53,7 +53,7 @@ function onResultsPose(results) {
   let b_angle = getAngle(results.poseLandmarks[12], results.poseLandmarks[24], results.poseLandmarks[26])
   let k_angle = getAngle(results.poseLandmarks[24], results.poseLandmarks[26], results.poseLandmarks[28])
   
-  canvasCtx5.font = '9px Arial'
+  canvasCtx5.font = '7px Arial'
   
   if(results.poseLandmarks[28].visibility < 0.25 && results.poseLandmarks[27].visibility < 0.25)
   {
