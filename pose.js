@@ -78,7 +78,7 @@ function onResultsPose(results) {
     
 //     speech.text = 'Face right'
     
-    window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
+//     window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
     
   }
   
@@ -100,11 +100,11 @@ function onResultsPose(results) {
       count--
       partial = false
       
-      window.speechSynthesis.cancel()
+//       window.speechSynthesis.cancel()
       
 //       speech.text = `${count} squats to go`
       
-      window.speechSynthesis.speak(speech)
+//       window.speechSynthesis.speak(speech)
       
       if(count === 0)
       {
@@ -119,7 +119,7 @@ function onResultsPose(results) {
     
 //     speech.text = 'Partial squat'
     
-    window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
+//     window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
     
     partial = false
   }
