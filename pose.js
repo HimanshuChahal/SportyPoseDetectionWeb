@@ -52,12 +52,12 @@ function onResultsPose(results) {
   document.body.classList.add('loaded');
   fpsControl.tick();
   
-  let speech = new SpeechSynthesisUtterance()
+//   let speech = new SpeechSynthesisUtterance()
 
   canvasCtx5.save();
   canvasCtx5.clearRect(0, 0, out5.width, out5.height);
-  //canvasCtx5.drawImage(
-  //    results.image, 0, 0, out5.width, out5.height);
+  canvasCtx5.drawImage(
+     results.image, 0, 0, out5.width, out5.height);
       
   if(results.poseLandmarks !== undefined)
   {
@@ -76,7 +76,7 @@ function onResultsPose(results) {
   {
     canvasCtx5.fillText('Face your right side', 20, 20)
     
-    speech.text = 'Face right'
+//     speech.text = 'Face right'
     
     window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
     
@@ -102,7 +102,7 @@ function onResultsPose(results) {
       
       window.speechSynthesis.cancel()
       
-      speech.text = `${count} squats to go`
+//       speech.text = `${count} squats to go`
       
       window.speechSynthesis.speak(speech)
       
@@ -117,7 +117,7 @@ function onResultsPose(results) {
   {
     canvasCtx5.fillText('Partial squat', 20, 30)
     
-    speech.text = 'Partial squat'
+//     speech.text = 'Partial squat'
     
     window.speechSynthesis.speaking ? null : window.speechSynthesis.speak(speech)
     
