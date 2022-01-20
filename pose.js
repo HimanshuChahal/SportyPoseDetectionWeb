@@ -178,8 +178,8 @@ const camera = new Camera(video5, {
   onFrame: async () => {
     await pose.send({image: video5});
   },
-  width: out5.width,
-  height: out5.height
+  width: 1280,
+  height: 720
 });
 camera.start();
 
